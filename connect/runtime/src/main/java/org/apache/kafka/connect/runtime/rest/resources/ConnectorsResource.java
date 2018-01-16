@@ -47,6 +47,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -112,7 +113,7 @@ public class ConnectorsResource {
         herder.connectorInfo(connector, cb);
 
         ConnectorInfo connectorInfo = completeOrForwardRequest(cb, "/connectors/" + connector, "GET", null, forward);
-        return new ConnectorInfo(connectorInfo.name(), herder.maskCredentials(connector, connectorInfo.config()), connectorInfo.tasks(), connectorInfo.type());
+        return new ConnectorInfo(connectorInfo.name(), herder.maskCredentials(connector, connectorInfo.config()), connectorInfo.tasks());
     }
 
     @GET
